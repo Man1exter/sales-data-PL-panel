@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.express as px
 import sys
+#module.exports = { 'pyplot library library': 'matplotlib.pyplot', 'pandas library': 'pandas', 'streamlit library': 'streamlit', 'plotly express library': 'plotly.express', 'sys library': 'sys' }
 
 # 1. Funkcje do pobierania danych (ZAIMPLEMENTUJ WEDŁUG POTRZEB)
 @st.cache_data  # Cache, aby unikać ponownego pobierania danych przy każdej zmianie w panelu
