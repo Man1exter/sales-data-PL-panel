@@ -2,14 +2,33 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Załaduj dane z Excela
 excel_file = pd.ExcelFile("C:/Users/mperz/Desktop/sales-data-PL-panel/Excel-Python/przykladowe_dane_produkcja.xlsx")
 df_robocizna = excel_file.parse("Robocizna")
 df_pakowanie = excel_file.parse("Pakowanie")
 
-# Załaduj dane z Excela
-excel_file = pd.ExcelFile("przykladowe_dane_produkcja.xlsx")
-df_robocizna = excel_file.parse("Robocizna")
-df_pakowanie = excel_file.parse("Pakowanie")
+# Sprawdź typy danych
+print("Typy danych w df_pakowanie:")
+print(df_pakowanie.dtypes)
+print("\nTypy danych w df_robocizna:")
+print(df_robocizna.dtypes)
+
+# Przekonwertuj na liczbowe, jeśli trzeba (df_pakowanie)
+df_pakowanie['Ilość Opakowań'] = pd.to_numeric(df_pakowanie['Ilość Opakowań'], errors='coerce').fillna(0)
+df_pakowanie['Koszt Jednostkowy'] = pd.to_numeric(df_pakowanie['Koszt Jednostkowy'], errors='coerce').fillna(0)
+df_pakowanie['Koszty Dodatkowe'] = pd.to_numeric(df_pakowanie['Koszty Dodatkowe'], errors='coerce').fillna(0)
+
+#Przekonwertuj na liczbowe, jeśli trzeba (df_robocizna)
+df_robocizna['Godziny Pracy'] = pd.to_numeric(df_robocizna['Godziny Pracy'], errors='coerce').fillna(0)
+df_robocizna['Koszt na Godzinę'] = pd.to_numeric(df_robocizna['Koszt na Godzinę'], errors='coerce').fillna(0)
+df_robocizna['Premie'] = pd.to_numeric(df_robocizna['Premie'], errors='coerce').fillna(0)
+df_robocizna['Dodatkowe Koszty'] = pd.to_numeric(df_robocizna['Dodatkowe Koszty'], errors='coerce').fillna(0)
+
+# Sprawdź typy danych ponownie, aby upewnić się, że są liczbowe
+print("\nTypy danych w df_pakowanie po konwersji:")
+print(df_pakowanie.dtypes)
+print("\nTypy danych w df_robocizna po konwersji:")
+print(df_robocizna.dtypes)
 
 #Przetwarzanie Danych
 df_robocizna['Koszty Robocizny'] = df_robocizna['Godziny Pracy'] * df_robocizna['Koszt na Godzinę'] + df_robocizna['Premie'] + df_robocizna['Dodatkowe Koszty']
