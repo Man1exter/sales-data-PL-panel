@@ -2,6 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+excel_file = pd.ExcelFile("C:/Users/mperz/Desktop/sales-data-PL-panel/Excel-Python/przykladowe_dane_produkcja.xlsx")
+df_robocizna = excel_file.parse("Robocizna")
+df_pakowanie = excel_file.parse("Pakowanie")
+
 # Załaduj dane z Excela
 excel_file = pd.ExcelFile("przykladowe_dane_produkcja.xlsx")
 df_robocizna = excel_file.parse("Robocizna")
