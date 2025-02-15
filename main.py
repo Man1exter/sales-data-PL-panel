@@ -7,6 +7,7 @@ import sys
 
 # 1. Funkcje do pobierania danych (ZAIMPLEMENTUJ WEDŁUG POTRZEB)
 @st.cache_data  # Cache, aby unikać ponownego pobierania danych przy każdej zmianie w panelu
+
 def pobierz_dane_gus():
     """
     Pobiera dane z Głównego Urzędu Statystycznego (GUS).
@@ -21,6 +22,7 @@ def pobierz_dane_gus():
     return df
 
 @st.cache_data  # Cache danych z firmy
+
 def pobierz_dane_firmowe():
     """
     Pobiera dane z systemów firmowych (CRM, ERP, bazy danych).
